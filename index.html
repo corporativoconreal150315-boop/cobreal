@@ -30,6 +30,7 @@
             color: var(--text-dark);
             line-height: 1.6;
             background-color: var(--white);
+            overflow-x: hidden; /* Evita scroll horizontal por animaciones */
         }
 
         /* HEADER & NAVEGACIÓN */
@@ -39,6 +40,13 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            /* Transición suave para ocultar/mostrar */
+            transition: transform 0.4s ease-in-out;
+        }
+
+        /* Clase dinámica para ocultar el header */
+        header.hide {
+            transform: translateY(-100%);
         }
 
         .nav-container {
@@ -76,7 +84,6 @@
 
         /* HERO SECTION */
         .hero {
-            /* Uso de la imagen del mazo con superposición azul oscuro para leer el texto */
             background: linear-gradient(rgba(1, 28, 89, 0.85), rgba(1, 28, 89, 0.85)), url('https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a699137810d81a263e84955.jpg') center/cover no-repeat;
             color: var(--white);
             text-align: center;
@@ -124,7 +131,7 @@
             margin: 10px auto 0;
         }
 
-        /* GRID SYSTEM (Misión, Visión, Historia) */
+        /* GRID SYSTEM */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -137,12 +144,13 @@
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border-top: 5px solid var(--blue-corp);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) !important; /* Mantiene el hover por encima de la animación */
             border-top: 5px solid var(--gold-corp);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
         .card h3 {
@@ -173,6 +181,11 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            transition: background 0.3s ease;
+        }
+        
+        .value-item:hover {
+            background: var(--gold-corp);
         }
 
         .reason-list {
@@ -202,8 +215,13 @@
             background: var(--white);
             border: 1px solid #eee;
             border-radius: 8px;
+            transition: box-shadow 0.3s;
         }
         
+        .practice-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
         .practice-card h4 {
             color: var(--blue-corp);
             margin-bottom: 15px;
@@ -259,7 +277,7 @@
         }
 
         footer {
-            background-color: #01133d; /* Un tono más oscuro del azul para el footer */
+            background-color: #01133d;
             color: var(--white);
             padding: 40px 20px 20px;
             text-align: center;
@@ -289,6 +307,23 @@
             color: #aaa;
         }
 
+        /* === CLASES DE ANIMACIÓN AL HACER SCROLL === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Retrasos para elementos en grupo (efecto cascada) */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.5s; }
+
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .nav-container {
@@ -307,23 +342,22 @@
 <body>
 
     <!-- ENCABEZADO Y NAVEGACIÓN -->
-    <header>
+    <header id="main-header">
         <div class="nav-container">
             <div class="logo">
                 <a href="#">
-                    <!-- Logo PNG con transparencia -->
                     <img src="https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a699137810d81a263e8495a.png" alt="Corporativo Cobreal Logo">
                 </a>
             </div>
             <nav>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="https://cobreal.corporativoconreal150315.workers.dev//Sobre-nosotros">Sobre nosotros</a></li>
-                    <li><a href="https://cobreal.corporativoconreal150315.workers.dev//Herramientas-de-Gestion">Herramientas de Gestión</a></li>
-                    <li><a href="https://cobreal.corporativoconreal150315.workers.dev//Practicas">Prácticas</a></li>
-                    <li><a href="https://cobreal.corporativoconreal150315.workers.dev//Contactanos">Contáctanos</a></li>
-                    <li><a href="https://cobreal.corporativoconreal150315.workers.dev//Bolsa-de-trabajo">Bolsa de trabajo</a></li>
-                    <li><a href="https://cobreal.corporativoconreal150315.workers.dev//Aviso-de-Privacidad">Aviso de Privacidad</a></li>
+                    <li><a href="https://cobreal.com.mx/Sobre-nosotros">Sobre nosotros</a></li>
+                    <li><a href="https://cobreal.com.mx/Herramientas-de-Gestion">Herramientas de Gestión</a></li>
+                    <li><a href="https://cobreal.com.mx/Practicas">Prácticas</a></li>
+                    <li><a href="https://cobreal.com.mx/Contactanos">Contáctanos</a></li>
+                    <li><a href="https://cobreal.com.mx/Bolsa-de-trabajo">Bolsa de trabajo</a></li>
+                    <li><a href="https://cobreal.com.mx/Aviso-de-Privacidad">Aviso de Privacidad</a></li>
                 </ul>
             </nav>
         </div>
@@ -331,23 +365,23 @@
 
     <!-- HERO SECTION -->
     <div class="hero">
-        <h1>Corporativo Cobreal</h1>
-        <p>Logramos relaciones comerciales sólidas poniendo a disposición de nuestros clientes una especial atención en la óptima recuperación de sus recursos económicos.</p>
+        <h1 class="reveal">Corporativo Cobreal</h1>
+        <p class="reveal delay-1">Logramos relaciones comerciales sólidas poniendo a disposición de nuestros clientes una especial atención en la óptima recuperación de sus recursos económicos.</p>
     </div>
 
     <!-- ¿QUIENES SOMOS? -->
     <section class="container" id="quienes-somos">
-        <h2 class="section-title">¿Quiénes somos?</h2>
+        <h2 class="section-title reveal">¿Quiénes somos?</h2>
         <div class="grid-3">
-            <div class="card">
+            <div class="card reveal delay-1">
                 <h3>Nuestra Historia</h3>
                 <p>Corporativo Cobreal surgió en el año 2015, con el objetivo de lograr relaciones comerciales sólidas al poner a disposición de todos sus clientes una especial atención en la óptima recuperación de sus recursos económicos ponderando el prestigio y la imagen de este.</p>
             </div>
-            <div class="card">
+            <div class="card reveal delay-2">
                 <h3>Misión</h3>
                 <p>Dirigimos nuestra atención hacia el desempeño de actividades con altos estándares de calidad en el servicio a clientes. Garantizamos la recolección de activos y la recuperación de recursos monetarios haciendo uso de nuestras herramientas vanguardistas, resaltando nuestro talento humano, respetando normativas, integridad y excelencia.</p>
             </div>
-            <div class="card">
+            <div class="card reveal delay-3">
                 <h3>Visión</h3>
                 <p>Consolidarnos dentro del sector como empresa líder e integrarnos exponencialmente como socios de negocios con empresas nacionales e internacionales.</p>
             </div>
@@ -357,8 +391,8 @@
     <!-- VALORES Y RAZONES -->
     <section class="bg-light">
         <div class="container">
-            <h2 class="section-title">Nuestros Valores</h2>
-            <div class="list-container" style="margin-bottom: 50px;">
+            <h2 class="section-title reveal">Nuestros Valores</h2>
+            <div class="list-container reveal delay-1" style="margin-bottom: 50px;">
                 <div class="value-item"><i class="fas fa-check"></i> Compromiso</div>
                 <div class="value-item"><i class="fas fa-check"></i> Confiabilidad</div>
                 <div class="value-item"><i class="fas fa-check"></i> Experiencia</div>
@@ -368,8 +402,8 @@
                 <div class="value-item"><i class="fas fa-check"></i> Transparencia</div>
             </div>
 
-            <h2 class="section-title">Razón para elegirnos</h2>
-            <ul class="reason-list">
+            <h2 class="section-title reveal">Razón para elegirnos</h2>
+            <ul class="reason-list reveal delay-2">
                 <li>1. Trabajo con responsabilidad social.</li>
                 <li>2. Excelencia en atención a clientes y servicios.</li>
                 <li>3. Experiencia en productos y diferentes carteras.</li>
@@ -381,31 +415,31 @@
 
     <!-- ÁREAS DE PRÁCTICAS -->
     <section class="container" id="practicas">
-        <h2 class="section-title">Áreas de Prácticas</h2>
+        <h2 class="section-title reveal">Áreas de Prácticas</h2>
         <div class="practices-grid">
-            <div class="practice-card">
-                <h4><i class="fas fa-search-dollar" style="color:var(--gold-corp);"></i> Análisis y evaluación de la deuda</h4>
+            <div class="practice-card reveal delay-1">
+                <h4><i class="fas fa-search-dollar" style="color:var(--gold-corp);"></i> Análisis y evaluación</h4>
                 <ul>
                     <li>Estudio detallado de los expedientes para entender la naturaleza de las deudas.</li>
                     <li>Verificación de documentos contractuales y condiciones acordadas.</li>
                     <li>Evaluación de la capacidad de pago de los deudores.</li>
                 </ul>
             </div>
-            <div class="practice-card">
+            <div class="practice-card reveal delay-2">
                 <h4><i class="fas fa-handshake" style="color:var(--gold-corp);"></i> Negociación extrajudicial</h4>
                 <ul>
                     <li>Contacto con deudores para acordar métodos de pago o reestructuración.</li>
                     <li>Manejo de llamadas, correos y comunicación para acuerdos sin llegar a juicio.</li>
                 </ul>
             </div>
-            <div class="practice-card">
+            <div class="practice-card reveal delay-3">
                 <h4><i class="fas fa-balance-scale" style="color:var(--gold-corp);"></i> Asesoría Legal</h4>
                 <ul>
                     <li>Consultoría legal a clientes que delegan la recuperación de la deuda.</li>
                     <li>Elaboración de estrategias para optimizar la recuperación evitando riesgos.</li>
                 </ul>
             </div>
-            <div class="practice-card">
+            <div class="practice-card reveal delay-1">
                 <h4><i class="fas fa-key" style="color:var(--gold-corp);"></i> Habilidades clave</h4>
                 <ul>
                     <li><strong>Comunicación efectiva:</strong> Negociación con deudores e información al cliente.</li>
@@ -417,20 +451,20 @@
     </section>
 
     <!-- MARCO LEGAL BANNER -->
-    <div class="legal-banner">
+    <div class="legal-banner reveal">
         <p>Corporativo Cobreal opera dentro de un marco legal que protege a acreedores y deudores, garantizando la recuperación sin prácticas abusivas, respetando datos personales, derechos de los consumidores y procedimientos judiciales vigentes.</p>
     </div>
 
     <!-- CALL TO ACTION / CONTACTO RÁPIDO -->
     <section class="contact-section">
         <div class="container contact-grid">
-            <div class="contact-box">
+            <div class="contact-box reveal delay-1">
                 <i class="fas fa-headset"></i>
                 <h3>¿Necesitas hablar con nosotros?</h3>
                 <p>55 71 58 88 63</p>
                 <p>55 70 95 84 68</p>
             </div>
-            <div class="contact-box">
+            <div class="contact-box reveal delay-2">
                 <i class="fas fa-envelope-open-text"></i>
                 <h3>Escríbenos</h3>
                 <p>contacto@cobranzareal.com</p>
@@ -440,8 +474,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <div class="container">
-            <!-- Logo alternativo con fondo blanco puede ir aquí si lo deseas. En este caso uso texto para mantener limpieza -->
+        <div class="container reveal">
             <div class="footer-info">
                 <div>
                     <i class="fas fa-map-marker-alt"></i>
@@ -462,5 +495,58 @@
         </div>
     </footer>
 
+    <!-- SCRIPTS DE ANIMACIÓN Y COMPORTAMIENTO -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // 1. Lógica para ocultar/mostrar el Header al hacer scroll
+            let lastScrollTop = 0;
+            const header = document.getElementById('main-header');
+
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Si el usuario hace scroll hacia abajo más de 50px, ocultamos el header
+                if (scrollTop > 50) {
+                    if (scrollTop > lastScrollTop) {
+                        // Haciendo scroll hacia abajo
+                        header.classList.add('hide');
+                    } else {
+                        // Haciendo scroll hacia arriba
+                        header.classList.remove('hide');
+                    }
+                } else {
+                    // Si estamos hasta arriba de la página, aseguramos que se vea
+                    header.classList.remove('hide');
+                }
+                lastScrollTop = scrollTop;
+            });
+
+            // 2. Lógica para las transiciones profesionales (Intersection Observer)
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // El elemento se animará cuando el 15% sea visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Agrega la clase activa para disparar la animación CSS
+                        entry.target.classList.add('active');
+                        // Deja de observar el elemento una vez que ya apareció
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Selecciona todos los elementos con la clase 'reveal'
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+        });
+    </script>
 </body>
 </html>
