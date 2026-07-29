@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporativo Cobreal | Contáctanos</title>
+    <!-- Importar fuente de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables de color */
+        :root {
+            --blue-corp: #011c59;
+            --gold-corp: #a7891b;
+            --light-bg: #f4f6f9;
+            --text-dark: #333333;
+            --white: #ffffff;
+        }
+
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* HEADER & NAVEGACIÓN */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        header.hide {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--blue-corp);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--gold-corp);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, var(--blue-corp) 0%, #022a85 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--gold-corp);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CONTENIDO PRINCIPAL */
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        /* COLUMNA IZQUIERDA: INFORMACIÓN Y FORMULARIO */
+        .contact-info h2 {
+            color: var(--blue-corp);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p.intro {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .contact-item i {
+            color: var(--gold-corp);
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        /* ESTILOS DEL FORMULARIO */
+        .contact-form {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--blue-corp);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--blue-corp);
+            margin-bottom: 8px;
+        }
+
+        .form-group input, .form-group textarea {
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold-corp);
+            box-shadow: 0 0 8px rgba(167, 137, 27, 0.2);
+        }
+
+        .btn-submit {
+            background-color: var(--blue-corp);
+            color: var(--white);
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--gold-corp);
+            transform: translateY(-2px);
+        }
+
+        /* COLUMNA DERECHA: MAPA */
+        .map-wrapper {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .map-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #01133d;
+            color: var(--white);
+            padding: 50px 20px 20px;
+            text-align: center;
+        }
+
+        .footer-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-info div {
+            max-width: 250px;
+        }
+        
+        .footer-info i {
+            color: var(--gold-corp);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* === CLASES DE ANIMACIÓN AL HACER SCROLL === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .map-wrapper {
+                min-height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO Y NAVEGACIÓN -->
+    <header id="main-header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="https://cobreal.com.mx/">
+                    <!-- Logo PNG con transparencia -->
+                    <img src="https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a699137810d81a263e8495a.png" alt="Corporativo Cobreal Logo">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="https://cobreal.com.mx/">Home</a></li>
+                    <li><a href="https://cobreal.com.mx/Sobre-nosotros">Sobre nosotros</a></li>
+                    <li><a href="https://cobreal.com.mx/Herramientas-de-Gestion">Herramientas de Gestión</a></li>
+                    <li><a href="https://cobreal.com.mx/Practicas">Prácticas</a></li>
+                    <li><a href="#" class="active">Contáctanos</a></li>
+                    <li><a href="https://cobreal.com.mx/Bolsa-de-trabajo">Bolsa de trabajo</a></li>
+                    <li><a href="https://cobreal.com.mx/Aviso-de-Privacidad">Aviso de Privacidad</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <h1 class="reveal">Contáctanos</h1>
+    </div>
+
+    <!-- SECCIÓN DE CONTACTO Y FORMULARIO -->
+    <section class="container">
+        <div class="contact-wrapper">
+            
+            <!-- INFORMACIÓN Y FORMULARIO (Columna Izquierda) -->
+            <div class="contact-info reveal">
+                <h2>¿Necesitas hablar con nosotros?</h2>
+                <p class="intro">Contáctanos para que nosotros podamos hacer lo que sabemos hacer. Recuerda que también nos puedes encontrar en nuestras redes sociales.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>+52 55 8533 1882</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>C. Viveros de Asís 30, Hab Viveros de la Loma,<br>54080 Tlalnepantla, Méx.</span>
+                    </div>
+                </div>
+
+                <!-- FORMULARIO -->
+                <form action="#" method="POST" class="contact-form reveal delay-1">
+                    <div class="form-group">
+                        <label for="nombre">Nombre *</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="tucorreo@ejemplo.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contacto">Contacto *</label>
+                        <input type="tel" id="contacto" name="contacto" required placeholder="Número de teléfono">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje *</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" required placeholder="¿En qué te podemos ayudar?"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                </form>
+            </div>
+
+            <!-- MAPA (Columna Derecha) -->
+            <div class="map-wrapper reveal delay-2">
+                <img src="https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a6a86d113ce0fc563481587.png" alt="Mapa de Ubicación Corporativo Cobreal">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container reveal">
+            <div class="footer-info">
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--gold-corp);">Dirección</h3>
+                    <p>C. Viveros de Asís 30, Hab Viveros de la Loma, 54080 Tlalnepantla, Méx.</p>
+                </div>
+                <div>
+                    <i class="fas fa-phone-alt"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--gold-corp);">Teléfono</h3>
+                    <p>+52 55 8533 1882</p>
+                </div>
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--gold-corp);">Correo electrónico</h3>
+                    <p>contacto@cobranzareal.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 cobreal.com.mx - Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS DE ANIMACIÓN Y COMPORTAMIENTO -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // 1. Ocultar/Mostrar el Header al hacer scroll
+            let lastScrollTop = 0;
+            const header = document.getElementById('main-header');
+
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > 50) {
+                    if (scrollTop > lastScrollTop) {
+                        header.classList.add('hide'); // Scroll hacia abajo
+                    } else {
+                        header.classList.remove('hide'); // Scroll hacia arriba
+                    }
+                } else {
+                    header.classList.remove('hide'); // Hasta arriba
+                }
+                lastScrollTop = scrollTop;
+            });
+
+            // 2. Transiciones profesionales al hacer scroll
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+        });
+    </script>
+</body>
+</html>
