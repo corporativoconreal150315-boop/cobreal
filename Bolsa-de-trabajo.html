@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporativo Cobreal | Bolsa de trabajo</title>
+    <!-- Importar fuente de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables de color */
+        :root {
+            --blue-corp: #011c59;
+            --gold-corp: #a7891b;
+            --light-bg: #f4f6f9;
+            --text-dark: #333333;
+            --white: #ffffff;
+        }
+
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* HEADER & NAVEGACIÓN */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        header.hide {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--blue-corp);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--gold-corp);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, var(--blue-corp) 0%, #022a85 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--gold-corp);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CONTENIDO PRINCIPAL */
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .job-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        /* COLUMNA IZQUIERDA: TEXTO Y FORMULARIO */
+        .job-info p.intro {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .job-info h3 {
+            color: var(--gold-corp);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .job-info p.sub-intro {
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+            color: var(--blue-corp);
+        }
+
+        /* ESTILOS DEL FORMULARIO */
+        .contact-form {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--blue-corp);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--blue-corp);
+            margin-bottom: 8px;
+        }
+
+        .form-group input, .form-group textarea {
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold-corp);
+            box-shadow: 0 0 8px rgba(167, 137, 27, 0.2);
+        }
+
+        .btn-submit {
+            background-color: var(--blue-corp);
+            color: var(--white);
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--gold-corp);
+            transform: translateY(-2px);
+        }
+
+        /* COLUMNA DERECHA: LOGO GRANDE */
+        .logo-wrapper {
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo-wrapper img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        /* CALL TO ACTION / CONTACTO RÁPIDO */
+        .contact-section {
+            background-color: var(--light-bg);
+            border-top: 1px solid #e1e5eb;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .contact-box i {
+            font-size: 2.5rem;
+            color: var(--gold-corp);
+            margin-bottom: 15px;
+        }
+
+        .contact-box h4 {
+            color: var(--blue-corp);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #01133d;
+            color: var(--white);
+            padding: 50px 20px 20px;
+            text-align: center;
+        }
+
+        .footer-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-info div {
+            max-width: 250px;
+        }
+        
+        .footer-info i {
+            color: var(--gold-corp);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* === CLASES DE ANIMACIÓN AL HACER SCROLL === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .job-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .logo-wrapper {
+                order: -1; /* Coloca la imagen arriba en móviles */
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO Y NAVEGACIÓN -->
+    <header id="main-header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="https://cobreal.com.mx/">
+                    <!-- Logo PNG con transparencia -->
+                    <img src="https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a699137810d81a263e8495a.png" alt="Corporativo Cobreal Logo">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="https://cobreal.com.mx/">Home</a></li>
+                    <li><a href="https://cobreal.com.mx/Sobre-nosotros">Sobre nosotros</a></li>
+                    <li><a href="https://cobreal.com.mx/Herramientas-de-Gestion">Herramientas de Gestión</a></li>
+                    <li><a href="https://cobreal.com.mx/Practicas">Prácticas</a></li>
+                    <li><a href="https://cobreal.com.mx/Contactanos">Contáctanos</a></li>
+                    <li><a href="#" class="active">Bolsa de trabajo</a></li>
+                    <li><a href="https://cobreal.com.mx/Aviso-de-Privacidad">Aviso de Privacidad</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <h1 class="reveal">Bolsa de Trabajo</h1>
+    </div>
+
+    <!-- SECCIÓN DE RECLUTAMIENTO Y FORMULARIO -->
+    <section class="container">
+        <div class="job-wrapper">
+            
+            <!-- INFORMACIÓN Y FORMULARIO (Columna Izquierda) -->
+            <div class="job-info reveal">
+                <p class="intro">La selección de nuestros colaboradores es fundamental, por tal motivo mantenemos un canal de reclutamiento y selección adecuado que nos permite adquirir talentos nuevos y mantener la relación de trabajo sin altos niveles de rotación.</p>
+                
+                <h3>¿Quieres formar parte de nuestro equipo?</h3>
+                <p class="sub-intro">Envía el formato para poder saber más de ti.</p>
+
+                <!-- FORMULARIO DE POSTULACIÓN -->
+                <form action="#" method="POST" class="contact-form reveal delay-1">
+                    <div class="form-group">
+                        <label for="nombre">Nombre *</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="tucorreo@ejemplo.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contacto">Contacto *</label>
+                        <input type="tel" id="contacto" name="contacto" required placeholder="Número de teléfono">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje *</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Cuéntanos brevemente sobre tu experiencia..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Enviar Datos</button>
+                </form>
+            </div>
+
+            <!-- LOGOTIPO GRANDE (Columna Derecha) -->
+            <div class="logo-wrapper reveal delay-2">
+                <img src="https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a6a878e0aea34991e627ca5.jpg" alt="Logotipo Corporativo Cobreal en grande">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION / CONTACTO RÁPIDO -->
+    <section class="contact-section">
+        <div class="container contact-grid">
+            <div class="contact-box reveal delay-1">
+                <i class="fas fa-headset"></i>
+                <h4>¿Necesitas hablar con nosotros?</h4>
+                <p>55 71 58 88 63</p>
+                <p>55 70 95 84 68</p>
+            </div>
+            <div class="contact-box reveal delay-2">
+                <i class="fas fa-envelope-open-text"></i>
+                <h4>Escríbenos</h4>
+                <p>contacto@cobranzareal.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container reveal">
+            <div class="footer-info">
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--gold-corp);">Dirección</h3>
+                    <p>C. Viveros de Asís 30, Hab Viveros de la Loma, 54080 Tlalnepantla, Méx.</p>
+                </div>
+                <div>
+                    <i class="fas fa-phone-alt"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--gold-corp);">Teléfono</h3>
+                    <p>+52 55 8533 1882</p>
+                </div>
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--gold-corp);">Correo electrónico</h3>
+                    <p>contacto@cobranzareal.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 cobreal.com.mx - Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS DE ANIMACIÓN Y COMPORTAMIENTO -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // 1. Ocultar/Mostrar el Header al hacer scroll
+            let lastScrollTop = 0;
+            const header = document.getElementById('main-header');
+
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > 50) {
+                    if (scrollTop > lastScrollTop) {
+                        header.classList.add('hide'); // Scroll hacia abajo
+                    } else {
+                        header.classList.remove('hide'); // Scroll hacia arriba
+                    }
+                } else {
+                    header.classList.remove('hide'); // Hasta arriba
+                }
+                lastScrollTop = scrollTop;
+            });
+
+            // 2. Transiciones profesionales al hacer scroll
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+        });
+    </script>
+</body>
+</html>

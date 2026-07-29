@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporativo Cobreal | Sobre nosotros</title>
+    <!-- Importar fuente de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables de color (Manteniendo la identidad corporativa) */
+        :root {
+            --blue-corp: #011c59;
+            --gold-corp: #a7891b;
+            --light-bg: #f4f6f9;
+            --text-dark: #333333;
+            --white: #ffffff;
+        }
+
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.7;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* HEADER & NAVEGACIÓN */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        header.hide {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--blue-corp);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--gold-corp);
+        }
+
+        /* HERO SECTION (Sobre nosotros - Imagen de la juez) */
+        .hero {
+            background: linear-gradient(rgba(1, 28, 89, 0.85), rgba(1, 28, 89, 0.85)), url('https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a6a75be855e619069d494ef.jpg') center/cover no-repeat;
+            color: var(--white);
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--gold-corp);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* SECCIONES GENERALES */
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--blue-corp);
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--gold-corp);
+            margin: 15px auto 0;
+        }
+
+        /* DISEÑO DE TEXTO E IMAGEN (Split Section) */
+        .split-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .split-section > div {
+            flex: 1 1 450px;
+        }
+
+        .split-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-bottom: 5px solid var(--gold-corp);
+        }
+
+        /* SECCIÓN NUESTRO EQUIPO (Fondo Gris Claro) */
+        .bg-light {
+            background-color: var(--light-bg);
+        }
+
+        .team-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.15rem;
+        }
+
+        .team-content i {
+            font-size: 3rem;
+            color: var(--gold-corp);
+            margin-bottom: 20px;
+        }
+
+        .team-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .team-tag {
+            background-color: var(--blue-corp);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background 0.3s ease;
+        }
+
+        .team-tag:hover {
+            background-color: var(--gold-corp);
+        }
+
+        /* CLIENTES */
+        .clients-wrapper {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .clients-wrapper img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.05));
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #01133d;
+            color: var(--white);
+            padding: 50px 20px 20px;
+            text-align: center;
+        }
+
+        .footer-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-info div {
+            max-width: 250px;
+        }
+        
+        .footer-info i {
+            color: var(--gold-corp);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* === CLASES DE ANIMACIÓN AL HACER SCROLL === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .split-section {
+                gap: 30px;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO Y NAVEGACIÓN -->
+    <header id="main-header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="https://cobreal.com.mx/">
+                    <!-- Logo PNG con transparencia -->
+                    <img src="https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a699137810d81a263e8495a.png" alt="Corporativo Cobreal Logo">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="https://cobreal.com.mx/">Home</a></li>
+                    <li><a href="#" class="active">Sobre nosotros</a></li>
+                    <li><a href="https://cobreal.com.mx/Herramientas-de-Gestion">Herramientas de Gestión</a></li>
+                    <li><a href="https://cobreal.com.mx/Practicas">Prácticas</a></li>
+                    <li><a href="https://cobreal.com.mx/Contactanos">Contáctanos</a></li>
+                    <li><a href="https://cobreal.com.mx/Bolsa-de-trabajo">Bolsa de trabajo</a></li>
+                    <li><a href="https://cobreal.com.mx/Aviso-de-Privacidad">Aviso de Privacidad</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (Imagen de la Juez de fondo) -->
+    <div class="hero">
+        <h1 class="reveal">Sobre nosotros</h1>
+    </div>
+
+    <!-- INTRODUCCIÓN Y RECUPERACIÓN DE RECURSOS (Imagen persona escribiendo) -->
+    <section class="container">
+        <div class="split-section">
+            <div class="split-text reveal">
+                <p>Nos ocupamos de recuperar los recursos de nuestros clientes para que ellos sigan otorgando productos o servicios de forma ininterrumpida.</p>
+                <p>Lo más importante para toda empresa o negocio es continuar con sus operaciones, por ello nos especializamos y enfocamos en atender las necesidades de recolección y recuperación de activos.</p>
+                <p><strong>Corporativo Cobreal</strong> se encarga de resolver, administrar y depurar los portafolios de los clientes otorgando resultados medibles y metas concretas.</p>
+            </div>
+            <div class="image-wrapper reveal delay-1">
+                <img src="https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a6a75be855e619069d494ea.jpg" alt="Persona analizando y escribiendo en papel">
+            </div>
+        </div>
+    </section>
+
+    <!-- NUESTRO EQUIPO -->
+    <section class="bg-light">
+        <div class="container reveal">
+            <h2 class="section-title">Nuestro equipo</h2>
+            <div class="team-content">
+                <i class="fas fa-users-cog"></i>
+                <p>El ambiente de trabajo en Corporativo Cobreal es fundamental al igual que el compromiso por hacer cumplir los valores empresariales. Empleamos capacitaciones de forma constante para reforzar los conocimientos y habilidades de negociación.</p>
+                <p>Nuestras negociaciones y seguimiento en cada portafolio son personalizados, dando así certeza y seguridad al cliente contactado.</p>
+                
+                <div class="team-tags reveal delay-1">
+                    <span class="team-tag"><i class="fas fa-deaf"></i> Escucha Activa</span>
+                    <span class="team-tag"><i class="fas fa-comments"></i> Capacidad Argumentativa</span>
+                    <span class="team-tag"><i class="fas fa-handshake"></i> Persuasión</span>
+                    <span class="team-tag"><i class="fas fa-bullseye"></i> Concreción</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUESTROS CLIENTES (Imagen de las marcas) -->
+    <section class="container">
+        <h2 class="section-title reveal">Nuestros Clientes</h2>
+        <div class="clients-wrapper reveal delay-1">
+            <img src="https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a6a7629c57fbdedd5efc3e5.png" alt="Logotipos de nuestros clientes">
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container reveal">
+            <div class="footer-info">
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--gold-corp);">Dirección</h3>
+                    <p>C. Viveros de Asís 30, Hab Viveros de la Loma, 54080 Tlalnepantla, Méx.</p>
+                </div>
+                <div>
+                    <i class="fas fa-phone-alt"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--gold-corp);">Teléfono</h3>
+                    <p>+52 55 8533 1882</p>
+                </div>
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--gold-corp);">Correo electrónico</h3>
+                    <p>contacto@cobranzareal.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 cobreal.com.mx - Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS DE ANIMACIÓN Y COMPORTAMIENTO -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // 1. Ocultar/Mostrar el Header al hacer scroll
+            let lastScrollTop = 0;
+            const header = document.getElementById('main-header');
+
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > 50) {
+                    if (scrollTop > lastScrollTop) {
+                        header.classList.add('hide'); // Scroll hacia abajo
+                    } else {
+                        header.classList.remove('hide'); // Scroll hacia arriba
+                    }
+                } else {
+                    header.classList.remove('hide'); // Hasta arriba
+                }
+                lastScrollTop = scrollTop;
+            });
+
+            // 2. Transiciones profesionales al hacer scroll
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+        });
+    </script>
+</body>
+</html>

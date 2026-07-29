@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporativo Cobreal | Aviso de Privacidad</title>
+    <!-- Importar fuente de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables de color */
+        :root {
+            --blue-corp: #011c59;
+            --gold-corp: #a7891b;
+            --light-bg: #f4f6f9;
+            --text-dark: #333333;
+            --white: #ffffff;
+        }
+
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.7;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* HEADER & NAVEGACIÓN */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        header.hide {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--blue-corp);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--gold-corp);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, var(--blue-corp) 0%, #022a85 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--gold-corp);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CONTENIDO PRINCIPAL (Aviso de Privacidad) */
+        section {
+            padding: 60px 20px 80px;
+        }
+
+        .privacy-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--white);
+        }
+
+        .privacy-logo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .privacy-logo img {
+            max-width: 100%;
+            width: 400px; /* Tamaño controlado para que no abrume el texto */
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .privacy-text {
+            text-align: justify;
+            font-size: 1.05rem;
+            color: #444;
+        }
+
+        .privacy-text p {
+            margin-bottom: 20px;
+        }
+
+        .privacy-text h3 {
+            color: var(--blue-corp);
+            font-size: 1.3rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--gold-corp);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .privacy-list {
+            list-style-type: square;
+            margin-left: 25px;
+            margin-bottom: 25px;
+            background-color: var(--light-bg);
+            padding: 20px 20px 20px 40px;
+            border-radius: 5px;
+            border-left: 4px solid var(--gold-corp);
+        }
+
+        .privacy-list li {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--blue-corp);
+        }
+
+        .highlight-box {
+            background-color: #fcf8e3;
+            border: 1px solid #faebcc;
+            color: #8a6d3b;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* CALL TO ACTION / CONTACTO RÁPIDO */
+        .contact-section {
+            background-color: var(--light-bg);
+            border-top: 1px solid #e1e5eb;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .contact-box i {
+            font-size: 2.5rem;
+            color: var(--gold-corp);
+            margin-bottom: 15px;
+        }
+
+        .contact-box h4 {
+            color: var(--blue-corp);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #01133d;
+            color: var(--white);
+            padding: 50px 20px 20px;
+            text-align: center;
+        }
+
+        .footer-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-info div {
+            max-width: 250px;
+        }
+        
+        .footer-info i {
+            color: var(--gold-corp);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* === CLASES DE ANIMACIÓN AL HACER SCROLL === */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .privacy-text {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO Y NAVEGACIÓN -->
+    <header id="main-header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="https://cobreal.com.mx/">
+                    <!-- Logo PNG con transparencia -->
+                    <img src="https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a699137810d81a263e8495a.png" alt="Corporativo Cobreal Logo">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="https://cobreal.com.mx/">Home</a></li>
+                    <li><a href="https://cobreal.com.mx/Sobre-nosotros">Sobre nosotros</a></li>
+                    <li><a href="https://cobreal.com.mx/Herramientas-de-Gestion">Herramientas de Gestión</a></li>
+                    <li><a href="https://cobreal.com.mx/Practicas">Prácticas</a></li>
+                    <li><a href="https://cobreal.com.mx/Contactanos">Contáctanos</a></li>
+                    <li><a href="https://cobreal.com.mx/Bolsa-de-trabajo">Bolsa de trabajo</a></li>
+                    <li><a href="#" class="active">Aviso de Privacidad</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <h1 class="reveal">Aviso de Privacidad</h1>
+    </div>
+
+    <!-- CONTENIDO DEL AVISO -->
+    <section>
+        <div class="privacy-container">
+            
+            <!-- Logo Superior -->
+            <div class="privacy-logo reveal">
+                <img src="https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a6a878e0aea34991e627ca5.jpg" alt="Logotipo Corporativo Cobreal">
+            </div>
+
+            <!-- Textos Legales -->
+            <div class="privacy-text">
+                <p class="reveal delay-1">Con fundamento en los artículos 15 y 16 de la Ley Federal de Protección de Datos Personales en Posesión de Particulares hacemos de su conocimiento que <strong>Corporativo CobReal S. A. de C.V.</strong> con domicilio en Álamo 93, 201 Colonia Valle de los Pinos 1ra Sección, Tlalnepantla de Baz, Estado de México, C.P. 54040 Tels. 55 71588863 – 5570958468, es responsable de recabar sus datos personales, del uso que se le dé a los mismos y de su protección.</p>
+                
+                <h3 class="reveal delay-1">Finalidades del Uso de la Información</h3>
+                <p class="reveal delay-1">Su información personal será utilizada para las siguientes finalidades: proveer los servicios y productos que ha solicitado; notificarle sobre nuevos servicios o productos que tengan relación con los ya contratados o adquiridos; comunicarle sobre cambios en los mismos; elaborar estudios y programas que son necesarios para determinar hábitos de consumo; realizar evaluaciones periódicas de nuestros productos y servicios a efecto de mejorar la calidad de los mismos; evaluar la calidad del servicio que brindamos, y en general, para dar cumplimiento a las obligaciones que hemos contraído con usted.</p>
+
+                <h3 class="reveal delay-1">Datos Personales Requeridos</h3>
+                <p class="reveal delay-1">Para las finalidades antes mencionadas, requerimos obtener los siguientes datos personales:</p>
+                <ul class="privacy-list reveal delay-1">
+                    <li>Nombre completo</li>
+                    <li>Teléfono fijo y/o celular</li>
+                    <li>Correo electrónico</li>
+                    <li>ID de Facebook, Twitter y/o LinkedIn</li>
+                    <li>Dirección</li>
+                    <li>RFC y/o CURP</li>
+                </ul>
+
+                <h3 class="reveal delay-1">Derechos ARCO</h3>
+                <p class="reveal delay-1">Es importante informarle que usted tiene derecho al <strong>Acceso, Rectificación y Cancelación</strong> de sus datos personales, a <strong>Oponerse</strong> al tratamiento de estos o a revocar el consentimiento que para dicho fin nos haya otorgado.</p>
+                
+                <p class="reveal delay-1">Para ello, es necesario que envíe la solicitud en los términos que marca la Ley en su Art. 29 a <strong>Plutarco Caleb Álvarez</strong>, responsable de nuestro Departamento de Protección de Datos Personales, ubicado en Álamo 93, 201 Colonia Valle de los Pinos 1ra Sección, Tlalnepantla de Baz, Estado de México, C.P. 54040; Tels. 55 71588863 – 5570958468 o vía correo electrónico a <a href="mailto:contacto@cobranzareal.com" style="color: var(--blue-corp); font-weight: bold;">contacto@cobranzareal.com</a> el cual solicitamos confirme vía telefónica para garantizar su correcta recepción.</p>
+
+                <p class="reveal delay-1">En caso de que no desee de recibir mensajes promocionales de nuestra parte, puede enviarnos su solicitud por medio de la dirección electrónica: <a href="mailto:contacto@cobranzareal.com" style="color: var(--blue-corp); font-weight: bold;">contacto@cobranzareal.com</a>.</p>
+
+                <div class="highlight-box reveal delay-1">
+                    <p style="margin-bottom: 5px;">Importante: Cualquier modificación a este Aviso de Privacidad podrá consultarlo en https://cobranzareal.com/privacidad.</p>
+                    <p style="margin-bottom: 0; font-size: 0.9rem;">Fecha última actualización: <strong>21/01/2025</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION / CONTACTO RÁPIDO -->
+    <section class="contact-section">
+        <div class="container contact-grid">
+            <div class="contact-box reveal delay-1">
+                <i class="fas fa-headset"></i>
+                <h4>¿Necesitas hablar con nosotros?</h4>
+                <p>55 71 58 88 63</p>
+                <p>55 70 95 84 68</p>
+            </div>
+            <div class="contact-box reveal delay-2">
+                <i class="fas fa-envelope-open-text"></i>
+                <h4>Escríbenos</h4>
+                <p>contacto@cobranzareal.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container reveal">
+            <div class="footer-info">
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--gold-corp);">Dirección</h3>
+                    <p>C. Viveros de Asís 30, Hab Viveros de la Loma, 54080 Tlalnepantla, Méx.</p>
+                </div>
+                <div>
+                    <i class="fas fa-phone-alt"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--gold-corp);">Teléfono</h3>
+                    <p>+52 55 8533 1882</p>
+                </div>
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 10px; color: var(--gold-corp);">Correo electrónico</h3>
+                    <p>contacto@cobranzareal.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 cobreal.com.mx - Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS DE ANIMACIÓN Y COMPORTAMIENTO -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // 1. Ocultar/Mostrar el Header al hacer scroll
+            let lastScrollTop = 0;
+            const header = document.getElementById('main-header');
+
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > 50) {
+                    if (scrollTop > lastScrollTop) {
+                        header.classList.add('hide');
+                    } else {
+                        header.classList.remove('hide');
+                    }
+                } else {
+                    header.classList.remove('hide');
+                }
+                lastScrollTop = scrollTop;
+            });
+
+            // 2. Transiciones profesionales al hacer scroll
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.10 
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+        });
+    </script>
+</body>
+</html>
