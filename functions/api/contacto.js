@@ -15,8 +15,8 @@ export async function onRequestPost(context) {
         }
       ],
       from: {
-        // Importante: El correo "from" debe pertenecer a tu dominio.
-        email: "notificaciones@cobreal.com.mx",
+        // Usamos un correo del dominio que ya está autorizado y activo
+        email: "contacto@cobreal.com.mx",
         name: "Sitio Web Cobreal"
       },
       subject: "Nuevo Mensaje de Contacto Web",
@@ -43,9 +43,11 @@ export async function onRequestPost(context) {
     if (resp.ok) {
       return new Response("OK", { status: 200 });
     } else {
-      return new Response("Error al comunicarse con MailChannels", { status: 500 });
+      // Capturamos la respuesta exacta del servidor de correo para depurar fácilmente
+      const errorBody = await resp.text();
+      return new Response(`Error de MailChannels: ${errorBody}`, { status: 500 });
     }
   } catch (err) {
-    return new Response("Error interno del servidor", { status: 500 });
+    return new Response(`Error interno del servidor: ${err.message}`, { status: 500 });
   }
 }
