@@ -341,7 +341,7 @@
                 </div>
 
                 <!-- FORMULARIO -->
-                <form action="#" method="POST" class="contact-form reveal delay-1">
+                <form id="contactoForm" action="/api/contacto" method="POST" class="contact-form reveal delay-1">
                     <div class="form-group">
                         <label for="nombre">Nombre *</label>
                         <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
@@ -364,6 +364,9 @@
                     
                     <button type="submit" class="btn-submit">Enviar Mensaje</button>
                 </form>
+
+                <!-- Contenedor para el mensaje de éxito/error -->
+                <div id="formResponse" style="display:none; margin-top:15px; padding:15px; border-radius:5px; text-align:center; font-weight:bold;"></div>
             </div>
 
             <!-- MAPA (Columna Derecha) -->
@@ -402,34 +405,63 @@
 
     <!-- SCRIPTS DE ANIMACIÓN Y COMPORTAMIENTO -->
     <script>
+        // Script para manejar el envío del formulario usando la función de Cloudflare
+        document.getElementById('contactoForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = form.querySelector('.btn-submit');
+            const responseDiv = document.getElementById('formResponse');
+
+            btn.innerText = 'Enviando...';
+            btn.disabled = true;
+
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if(response.ok) {
+                    responseDiv.innerText = '¡Mensaje enviado con éxito!';
+                    responseDiv.style.backgroundColor = '#d4edda';
+                    responseDiv.style.color = '#155724';
+                    responseDiv.style.display = 'block';
+                    form.reset();
+                } else {
+                    throw new Error('Error al enviar');
+                }
+            } catch(err) {
+                responseDiv.innerText = 'Hubo un error al enviar. Por favor intenta de nuevo.';
+                responseDiv.style.backgroundColor = '#f8d7da';
+                responseDiv.style.color = '#721c24';
+                responseDiv.style.display = 'block';
+            }
+
+            btn.innerText = 'Enviar Mensaje';
+            btn.disabled = false;
+        });
+
+        // Script de Header y Animaciones originales
         document.addEventListener('DOMContentLoaded', function() {
-            
-            // 1. Ocultar/Mostrar el Header al hacer scroll
             let lastScrollTop = 0;
             const header = document.getElementById('main-header');
 
             window.addEventListener('scroll', function() {
                 let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
                 if (scrollTop > 50) {
                     if (scrollTop > lastScrollTop) {
-                        header.classList.add('hide'); // Scroll hacia abajo
+                        header.classList.add('hide'); 
                     } else {
-                        header.classList.remove('hide'); // Scroll hacia arriba
+                        header.classList.remove('hide'); 
                     }
                 } else {
-                    header.classList.remove('hide'); // Hasta arriba
+                    header.classList.remove('hide'); 
                 }
                 lastScrollTop = scrollTop;
             });
 
-            // 2. Transiciones profesionales al hacer scroll
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15 
-            };
-
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -440,10 +472,7 @@
             }, observerOptions);
 
             const revealElements = document.querySelectorAll('.reveal');
-            revealElements.forEach(el => {
-                observer.observe(el);
-            });
-            
+            revealElements.forEach(el => observer.observe(el));
         });
     </script>
 </body>
