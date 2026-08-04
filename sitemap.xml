@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    
+    <!-- Página Principal (Home) -->
+    <url>
+        <loc>https://cobreal.com.mx/</loc>
+        <lastmod>2026-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Sobre Nosotros -->
+    <url>
+        <loc>https://cobreal.com.mx/sobre-nosotros</loc>
+        <lastmod>2026-08-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Herramientas de Gestión -->
+    <url>
+        <loc>https://cobreal.com.mx/herramientas-de-gestion</loc>
+        <lastmod>2026-08-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Prácticas -->
+    <url>
+        <loc>https://cobreal.com.mx/practicas</loc>
+        <lastmod>2026-08-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Contáctanos -->
+    <url>
+        <loc>https://cobreal.com.mx/contactanos</loc>
+        <lastmod>2026-08-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Bolsa de trabajo -->
+    <url>
+        <loc>https://cobreal.com.mx/Bolsa-de-trabajo</loc>
+        <lastmod>2026-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Aviso de Privacidad -->
+    <url>
+        <loc>https://cobreal.com.mx/aviso-de-privacidad</loc>
+        <lastmod>2026-08-03</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+</urlset>
