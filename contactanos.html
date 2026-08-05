@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- Iconos de FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a72d650670a4ee78364f09c.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a72d650670a4ee78364f09c.png">
     <style>
         /* Variables de color */
         :root {
@@ -84,12 +84,12 @@
 
         /* HERO SECTION */
         .hero {
-    background: linear-gradient(rgba(1, 28, 89, 0.85), rgba(1, 28, 89, 0.85)), 
-                url('https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a72e634670a4ee78386f402.jpg') center/cover no-repeat;
-    color: var(--white);
-    text-align: center;
-    padding: 100px 20px;
-}
+            background: linear-gradient(rgba(1, 28, 89, 0.85), rgba(1, 28, 89, 0.85)), 
+                        url('https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a72e634670a4ee78386f402.jpg') center/cover no-repeat;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+        }
 
         .hero h1 {
             font-size: 3rem;
@@ -115,7 +115,7 @@
             align-items: start;
         }
 
-        /* COLUMNA IZQUIERDA: INFORMACIÓN Y FORMULARIO */
+        /* COLUMNA IZQUIERDA: INFORMACIÓN Y FORMULARIO TALLY */
         .contact-info h2 {
             color: var(--blue-corp);
             font-size: 2.2rem;
@@ -150,73 +150,29 @@
             text-align: center;
         }
 
-        /* ESTILOS DEL FORMULARIO */
-        .contact-form {
+        /* CONTENEDOR DE TALLY */
+        .tally-container {
             background: var(--light-bg);
-            padding: 30px;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border-top: 4px solid var(--blue-corp);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            font-weight: 600;
-            color: var(--blue-corp);
-            margin-bottom: 8px;
-        }
-
-        .form-group input, .form-group textarea {
-            padding: 12px 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--gold-corp);
-            box-shadow: 0 0 8px rgba(167, 137, 27, 0.2);
-        }
-
-        .btn-submit {
-            background-color: var(--blue-corp);
-            color: var(--white);
-            padding: 15px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            transition: background-color 0.3s ease, transform 0.2s;
-        }
-
-        .btn-submit:hover {
-            background-color: var(--gold-corp);
-            transform: translateY(-2px);
         }
 
         /* COLUMNA DERECHA: MAPA */
         .map-wrapper {
             width: 100%;
             height: 100%;
+            min-height: 550px;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        .map-wrapper img {
+        .map-wrapper iframe {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            border: 0;
             display: block;
         }
 
@@ -275,7 +231,7 @@
                 grid-template-columns: 1fr;
             }
             .map-wrapper {
-                min-height: 400px;
+                min-height: 450px;
             }
         }
 
@@ -327,7 +283,7 @@
     <section class="container">
         <div class="contact-wrapper">
             
-            <!-- INFORMACIÓN Y FORMULARIO (Columna Izquierda) -->
+            <!-- INFORMACIÓN Y FORMULARIO TALLY (Columna Izquierda) -->
             <div class="contact-info reveal">
                 <h2>¿Necesitas hablar con nosotros?</h2>
                 <p class="intro">Contáctanos para que nosotros podamos hacer lo que sabemos hacer. Recuerda que también nos puedes encontrar en nuestras redes sociales.</p>
@@ -343,47 +299,22 @@
                     </div>
                 </div>
 
-                <!-- FORMULARIO -->
-                <form id="contactoForm" action="/api/contacto" method="POST" class="contact-form reveal delay-1">
-                    <div class="form-group">
-                        <label for="nombre">Nombre *</label>
-                        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required placeholder="tucorreo@ejemplo.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="contacto">Contacto *</label>
-                        <input type="tel" id="contacto" name="contacto" required placeholder="Número de teléfono">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="mensaje">Mensaje *</label>
-                        <textarea id="mensaje" name="mensaje" rows="4" required placeholder="¿En qué te podemos ayudar?"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn-submit">Enviar Mensaje</button>
-                </form>
-
-                <!-- Contenedor para el mensaje de éxito/error -->
-                <div id="formResponse" style="display:none; margin-top:15px; padding:15px; border-radius:5px; text-align:center; font-weight:bold;"></div>
+                <!-- EMBED DE TALLY.SO -->
+                <div class="tally-container reveal delay-1">
+                    <iframe data-tally-src="https://tally.so/embed/RG1a4J?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="589" frameborder="0" marginheight="0" marginwidth="0" title="Contáctanos"></iframe>
+                    <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+                </div>
             </div>
 
-            <!-- MAPA (Columna Derecha) - Google Maps Embed -->
-<div class="map-wrapper reveal delay-2">
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1832.5812153715458!2d-99.22526358789153!3d19.521281620878884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d202d2ebaab77f%3A0x5f8e473d7c702fec!2sC.%20Viveros%20de%20As%C3%ADs%2030%2C%20Hab%20Viveros%20de%20la%20Loma%2C%2054080%20Tlalnepantla%2C%20M%C3%A9x.!5e0!3m2!1ses-419!2smx!4v1785914606263!5m2!1ses-419!2smx" 
-        width="100%" 
-        height="100%" 
-        style="border:0; display:block;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="strict-origin-when-cross-origin">
-    </iframe>
-</div>
+            <!-- MAPA (Columna Derecha) -->
+            <div class="map-wrapper reveal delay-2">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1832.5812153715458!2d-99.22526358789153!3d19.521281620878884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d202d2ebaab77f%3A0x5f8e473d7c702fec!2sC.%20Viveros%20de%20As%C3%ADs%2030%2C%20Hab%20Viveros%20de%20la%20Loma%2C%2054080%20Tlalnepantla%2C%20M%C3%A9x.!5e0!3m2!1ses-419!2smx!4v1785914606263!5m2!1ses-419!2smx" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="strict-origin-when-cross-origin">
+                </iframe>
+            </div>
 
         </div>
     </section>
@@ -414,45 +345,8 @@
         </div>
     </footer>
 
-    <!-- SCRIPTS DE ANIMACIÓN Y COMPORTAMIENTO -->
+    <!-- SCRIPT DE ANIMACIONES -->
     <script>
-        // Script para manejar el envío del formulario usando la función de Cloudflare
-        document.getElementById('contactoForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const btn = form.querySelector('.btn-submit');
-            const responseDiv = document.getElementById('formResponse');
-
-            btn.innerText = 'Enviando...';
-            btn.disabled = true;
-
-            try {
-const response = await fetch('/api/contacto', {
-    method: 'POST',
-    body: formData
-});
-
-                if(response.ok) {
-                    responseDiv.innerText = '¡Mensaje enviado con éxito!';
-                    responseDiv.style.backgroundColor = '#d4edda';
-                    responseDiv.style.color = '#155724';
-                    responseDiv.style.display = 'block';
-                    form.reset();
-                } else {
-                    throw new Error('Error al enviar');
-                }
-            } catch(err) {
-                responseDiv.innerText = 'Hubo un error al enviar. Por favor intenta de nuevo.';
-                responseDiv.style.backgroundColor = '#f8d7da';
-                responseDiv.style.color = '#721c24';
-                responseDiv.style.display = 'block';
-            }
-
-            btn.innerText = 'Enviar Mensaje';
-            btn.disabled = false;
-        });
-
-        // Script de Header y Animaciones originales
         document.addEventListener('DOMContentLoaded', function() {
             let lastScrollTop = 0;
             const header = document.getElementById('main-header');
