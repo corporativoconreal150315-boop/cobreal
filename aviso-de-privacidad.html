@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- Iconos de FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a72d650670a4ee78364f09c.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a72d650670a4ee78364f09c.png">
     <style>
         /* Variables de color */
         :root {
@@ -60,7 +60,7 @@
         }
 
         .logo img {
-            height: 200px;
+            height: 85px; /* Tamaño aumentado */
         }
 
         nav ul {
@@ -84,18 +84,20 @@
 
         /* HERO SECTION */
         .hero {
-    background: linear-gradient(rgba(1, 28, 89, 0.85), rgba(1, 28, 89, 0.85)), 
-                url('https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a7381dd50bc0683ca4b14d6.jpg') center/cover no-repeat;
-    color: var(--white);
-    text-align: center;
-    padding: 100px 20px;
-}
+            background: url('https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a7381dd50bc0683ca4b14d6.jpg') no-repeat center/contain;
+            background-color: var(--blue-corp); /* Color de fondo para rellenar bordes */
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px; /* Padding reducido para que la imagen se vea más grande */
+            min-height: 200px;
+        }
 
         .hero h1 {
             font-size: 3rem;
             color: var(--gold-corp);
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8); /* Sombra para legibilidad */
         }
 
         /* CONTENIDO PRINCIPAL (Aviso de Privacidad) */
@@ -116,7 +118,7 @@
 
         .privacy-logo img {
             max-width: 100%;
-            width: 400px; /* Tamaño controlado para que no abrume el texto */
+            width: 400px;
             height: auto;
             border-radius: 8px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
@@ -268,7 +270,6 @@
         <div class="nav-container">
             <div class="logo">
                 <a href="https://cobreal.com.mx/">
-                    <!-- Logo PNG con transparencia -->
                     <img src="https://assets.cdn.filesafe.space/orLNFmqquwQDs4QXcbfS/media/6a699137810d81a263e8495a.png" alt="Corporativo Cobreal Logo">
                 </a>
             </div>
